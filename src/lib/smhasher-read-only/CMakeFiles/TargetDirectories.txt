@@ -1,2 +1,0 @@
-/home/mana/develop/fxref/lib/smhasher-read-only/CMakeFiles/SMHasher.dir
-/home/mana/develop/fxref/lib/smhasher-read-only/CMakeFiles/SMHasherSupport.dir
