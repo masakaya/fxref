@@ -1,0 +1,22 @@
+IF (not exists "@cmake_current_binary_dir@/INSTALL_MANIFEST.TXT")
+	MESSAGE(fatal_error "cANNOT FIND INSTALL MANIFEST: \"@cmake_current_binary_dir@/INSTALL_MANIFEST.TXT\"")
+ENDIF(not exists "@cmake_current_binary_dir@/INSTALL_MANIFEST.TXT")
+
+FILE(read "@cmake_current_binary_dir@/INSTALL_MANIFEST.TXT" FILES)
+STRING(regex replace "\N" ";" FILES "${FILES}")
+FOREACH (FILE ${FILES})
+	MESSAGE(status "uNINSTALLING \"$env{destdir}${FILE}\"")
+	IF (exists "$env{destdir}${FILE}" or is_symlink "$env{destdir}${FILE}")
+		EXECUTE_PROCESS(
+			command @cmake_command@ -e REMOVE "$env{destdir}${FILE}"
+			output_variable RM_OUT
+			result_variable RM_RETVAL
+			)
+		IF(not ${RM_RETVAL} equal 0)
+			MESSAGE(fatal_error "pROBLEM WHEN REMOVING \"$env{destdir}${FILE}\"")
+		ENDIF (not ${RM_RETVAL} equal 0)
+	ELSE (exists "$env{destdir}${FILE}" or is_symlink "$env{destdir}${FILE}")
+		MESSAGE(status "fILE \"$env{destdir}${FILE}\" DOES NOT EXIST.")
+	ENDIF (exists "$env{destdir}${FILE}" or is_symlink "$env{destdir}${FILE}")
+ENDFOREACH(FILE)
+
