@@ -1,0 +1,6 @@
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
+#include_directories( ../mfind/)
+#link_directories( ../mfind/)
+add_executable(main.x main.cpp)
+#target_link_libraries( main.x mfind)
+target_link_libraries( main.x )
