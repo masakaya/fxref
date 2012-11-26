@@ -1,5 +1,4 @@
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
-#SET(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/src/Main/lib)
 
 #Puts here Include Directorys
 INCLUDE_DIRECTORIES (
@@ -13,7 +12,7 @@ LINK_DIRECTORIES(
 )   
 
 SET( TARGET_LINK                                                                                                              
-    find
+    FxrefUtils
 ) 
 
 
