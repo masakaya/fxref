@@ -2,4 +2,5 @@
 # fxref
 # Author: Masashi Kayahara <sylphs.mb AT gmail.com>
 #
-SUBDIRS(MurmurHash3)
+ADD_SUBDIRECTORY(MurmurHash3)
+ADD_SUBDIRECTORY(re2)
